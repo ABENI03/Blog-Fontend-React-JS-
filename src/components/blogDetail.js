@@ -3,6 +3,7 @@ import NavBar from "./NavBar";
 import {  useParams } from 'react-router-dom';
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import {server} from "../config";
 const BlogDetail = () => {
    
     const { id } = useParams();
@@ -10,7 +11,7 @@ const BlogDetail = () => {
   
     
     useEffect(()=>{
-        axios.get('http://localhost:5000/post/'+id).then((response)=>{
+        axios.get(server+'/posts/'+id).then((response)=>{
                  setPosts(response.data.data)
                 console.log(response.data)
         })

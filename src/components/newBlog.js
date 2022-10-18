@@ -16,14 +16,14 @@ const NewBlog = () => {
                 title:title,
                 summary:body
             }
-            axios.post('http://localhost:5000/post',data).then((response)=>{
-                console.log('created sucessfully')
-            })
+            // axios.post('http://localhost:5000/post',data).then((response)=>{
+            //     console.log('created sucessfully')
+            // })
         }
 
     return (
         <div>
-            <NavBar />
+           <NavBar></NavBar> 
             <div className="m-5" >
                 <div className="mb-3">
                     <label for="exampleFormControlInput1" className="form-label">Title</label>
@@ -35,7 +35,7 @@ const NewBlog = () => {
 
                 </div>
                 <div className="col-12">
-                    <button type="button" onClick={(e)=>CreateNewPost()} className="btn btn-primary">Post</button>
+                    <button type="button" onClick={(e)=>CreateNewPost()} className="btn btn-primary" style={{color:'white',backgroundColor:'#513252' ,border:"none"}}>Post</button>
                 </div>
             </div>
         </div>
