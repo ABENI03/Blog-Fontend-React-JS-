@@ -1,6 +1,17 @@
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import { distroyToken, isLoggedIn, server } from "../config";
 
 const NavBar = () => {
+    const navigate=useNavigate()
+    function Logout(){
+        distroyToken();
+        axios.post(server+'/users/logout')
+             .then((res)=>{
+                console.log(res.data)
+                navigate('/')
+             })
+    }
     return (
 
         <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{margin:"0px",padding:"0px"}} >
@@ -17,8 +28,10 @@ const NavBar = () => {
 
                     </ul>
                     <form className="d-flex">
-
-                        <Link to={'/login'} className="btn btn-outline-info" style={{color:"white" ,borderColor:"white"}} type="button">Login</Link>
+                        {
+                            isLoggedIn()==true?<button onClick={(e)=>Logout()} className="btn btn-outline-info" style={{color:"white" ,borderColor:"white"}} type="button">Logout</button>:<Link to={'/login'} className="btn btn-outline-info" style={{color:"white" ,borderColor:"white"}} type="button">Login</Link>
+                        }
+                        
                     </form>
                 </div>
             </div>
