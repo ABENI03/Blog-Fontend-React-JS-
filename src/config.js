@@ -1,4 +1,4 @@
-const server="http://localhost:5000/api"
+const server="https://blog-backend-with-mongo.herokuapp.com/api"
 
 const getToken=()=>{
    return window.localStorage.getItem("token")
